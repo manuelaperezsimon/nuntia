@@ -1,4 +1,4 @@
-import { Posts } from "../../interfaces/postsInterface";
+import { Posts } from "../../../interfaces/postsInterface";
 
 const fakeListPosts: Posts = [
   {

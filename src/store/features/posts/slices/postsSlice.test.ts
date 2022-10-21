@@ -1,5 +1,5 @@
 import { Posts } from "../../../../interfaces/postsInterface";
-import fakeListPosts from "../../../../test-utils/mocks/postsMocks";
+import fakeListPosts from "../../../../test-utils/mocks/posts/postsMocks";
 import postsSlice, { loadAllPostsActionCreator } from "./postsSlice";
 
 describe("Given a posts slice", () => {
