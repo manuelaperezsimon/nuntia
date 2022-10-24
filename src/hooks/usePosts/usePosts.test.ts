@@ -1,6 +1,6 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
-import { loadAllPostsActionCreator } from "../../store/features/posts/slices/postsSlice";
+import { loadAllPostsActionCreator } from "../../store/features/slices/posts/postsSlice";
 import usePosts from "./usePosts";
 import axios from "axios";
 import { toast } from "react-toastify";
