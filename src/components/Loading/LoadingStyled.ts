@@ -5,6 +5,19 @@ const LoadingStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    color: ${(props) => props.theme.blackColor};
+    font-size: 2rem;
+    animation: animate 2s infinite;
+
+    @keyframes animate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(720deg);
+      }
+    }
   }
 `;
 

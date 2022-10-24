@@ -1,4 +1,4 @@
-import { Waveform } from "@uiball/loaders";
+import { ImSpinner7 } from "react-icons/im";
 import LoadingStyled from "./LoadingStyled";
 
 interface LoadingProps {
@@ -9,14 +9,8 @@ const Loading = ({ isLoading }: LoadingProps): JSX.Element => {
   return (
     <>
       <LoadingStyled>
-        <div
-          aria-live="polite"
-          aria-busy={isLoading}
-          className="spinner__container"
-        >
-          {isLoading && (
-            <Waveform size={40} lineWeight={3.5} speed={1} color="black" />
-          )}
+        <div className="spinner__container">
+          {isLoading && <ImSpinner7 data-testid="spinner--loading" />}
         </div>
       </LoadingStyled>
     </>
