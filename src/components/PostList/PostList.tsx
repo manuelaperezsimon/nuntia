@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import usePosts from "../../hooks/usePosts/usePosts";
+import { Posts } from "../../interfaces/postsInterface";
 import { useAppSelector } from "../../store/hooks";
 import { RootState } from "../../store/store";
 import PostCard from "../PostCard/PostCard";
@@ -7,7 +8,7 @@ import PostsListStyled from "./PostListStyled";
 
 const PostList = (): JSX.Element => {
   const { getAllPosts } = usePosts();
-  const postsList = useAppSelector((state: RootState) => state.posts);
+  const postsList: Posts = useAppSelector((state: RootState) => state.posts);
 
   useEffect(() => {
     getAllPosts();

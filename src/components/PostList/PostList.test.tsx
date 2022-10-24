@@ -43,8 +43,4 @@ describe("Given a Posts List component", () => {
       });
     });
   });
-
-  describe("When it's intantiated", () => {
-    test("Then it should call the getAllPosts function", () => {});
-  });
 });
