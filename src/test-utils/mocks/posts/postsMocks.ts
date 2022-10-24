@@ -1,4 +1,4 @@
-import { Posts } from "../../../interfaces/postsInterface";
+import { Post, Posts } from "../../../interfaces/postsInterface";
 
 export const fakeListPosts: Posts = [
   {
@@ -27,3 +27,10 @@ export const fakeListPostsWithUserName: Posts = [
     userName: "Leanne Graham",
   },
 ];
+
+export const fakePost: Post = {
+  userId: 1,
+  title: "Skydiving",
+  body: "The best experience in the world",
+  userName: "Leanne Graham",
+};
