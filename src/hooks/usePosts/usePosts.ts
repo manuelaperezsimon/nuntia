@@ -4,6 +4,7 @@ import { useAppDispatch } from "../../store/hooks";
 import { loadAllPostsActionCreator } from "../../store/features/slices/posts/postsSlice";
 import { errorModal } from "../../utils/modals";
 import { Posts } from "../../interfaces/postsInterface";
+import { isLoadingActionCreator } from "../../store/features/slices/loading/loadingSlice";
 
 const usePosts = () => {
   const dispatch = useAppDispatch();
@@ -13,6 +14,7 @@ const usePosts = () => {
     const userURL = "https://jsonplaceholder.typicode.com/users/";
 
     try {
+      dispatch(isLoadingActionCreator());
       const { data } = await axios.get(allPostsURL);
       const rawPosts: Posts = data;
 
@@ -24,6 +26,7 @@ const usePosts = () => {
       const postsList: Posts = await Promise.all(promiseList);
 
       dispatch(loadAllPostsActionCreator(postsList));
+      dispatch(isLoadingActionCreator());
     } catch (error) {
       errorModal("Oops, something went wrong :(");
     }

@@ -13,7 +13,7 @@ const mockUseAppSelector = jest.fn();
 jest.mock("../../store/hooks", () => ({
   ...jest.requireActual("../../store/hooks"),
   useAppSelector: (callback: (state: RootState) => Posts) => {
-    callback({ posts: [] });
+    callback({ posts: [], loading: false });
     return mockUseAppSelector();
   },
 }));
