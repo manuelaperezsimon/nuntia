@@ -1,33 +1,29 @@
 import { render, screen } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { Posts } from "../../interfaces/postsInterface";
-import { RootState, store } from "../../store/store";
+import { Posts } from "../interfaces/postsInterface";
+import { RootState } from "../store/store";
 import {
   fakeListPosts,
   fakeListPostsWithUserName,
-} from "../../test-utils/mocks/posts/postsMocks";
-import PostList from "./PostList";
+} from "../test-utils/mocks/posts/postsMocks";
+import Wrapper from "../utils/Wrapper";
+import PostsListPage from "./PostsListPage";
 
 const mockUseAppSelector = jest.fn();
 
-jest.mock("../../store/hooks", () => ({
-  ...jest.requireActual("../../store/hooks"),
+jest.mock("../store/hooks", () => ({
+  ...jest.requireActual("../store/hooks"),
   useAppSelector: (callback: (state: RootState) => Posts) => {
     callback({ posts: [] });
     return mockUseAppSelector();
   },
 }));
 
-describe("Given a Posts List component", () => {
+describe("Given a PostsListPage component", () => {
   describe("When it's instantiated", () => {
-    test("Then it should show a list of two posts", async () => {
+    test("Then it should show a PostList component", async () => {
       mockUseAppSelector.mockReturnValue(fakeListPostsWithUserName);
 
-      render(
-        <Provider store={store}>
-          <PostList />
-        </Provider>
-      );
+      render(<PostsListPage />, { wrapper: Wrapper });
 
       const titlesOfPosts = [
         screen.getByRole("heading", {

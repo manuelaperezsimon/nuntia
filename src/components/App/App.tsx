@@ -1,14 +1,22 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
+import { Route, Routes } from "react-router-dom";
 import styledMainTheme from "../../styleMainTheme";
-import PostList from "../PostList/PostList";
+import PostsListPage from "../../pages/PostsListPage";
 
 function App() {
   return (
     <ThemeProvider theme={styledMainTheme}>
-      <div className="App">
-        <PostList />
-      </div>
+      <Routes>
+        <Route
+          path="/posts"
+          element={
+            <>
+              <PostsListPage />
+            </>
+          }
+        />
+      </Routes>
     </ThemeProvider>
   );
 }
