@@ -1,16 +1,29 @@
 import { Posts } from "../../../interfaces/postsInterface";
 
-const fakeListPosts: Posts = [
+export const fakeListPosts: Posts = [
   {
     userId: 1,
-    title: "Viajar",
-    body: "La mejor playa es en Santa Teresa, Costa Rica",
+    title: "Travel",
+    body: "The best beach is un Santa Teresa, Costa Rica",
   },
   {
-    userId: 2,
-    title: "Paracaidismo",
-    body: "Dicen que es la mejor experiencia del mundo!",
+    userId: 1,
+    title: "Skydiving",
+    body: "The best experience in the world",
   },
 ];
 
-export default fakeListPosts;
+export const fakeListPostsWithUserName: Posts = [
+  {
+    userId: 1,
+    title: "Travel",
+    body: "The best beach is un Santa Teresa, Costa Rica",
+    userName: "Leanne Graham",
+  },
+  {
+    userId: 1,
+    title: "Skydiving",
+    body: "The best experience in the world",
+    userName: "Leanne Graham",
+  },
+];
