@@ -1,10 +1,10 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import { loadAllPostsActionCreator } from "../../store/features/posts/slices/postsSlice";
-import fakeListPosts from "../../test-utils/mocks/posts/postsMocks";
 import usePosts from "./usePosts";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { fakeListPostsWithUserName } from "../../test-utils/mocks/posts/postsMocks";
 
 jest.mock("react-toastify");
 const mockUseDispatch = jest.fn();
@@ -28,7 +28,7 @@ describe("Given a usePosts function", () => {
 
       await waitFor(() => {
         expect(mockUseDispatch).toHaveBeenCalledWith(
-          loadAllPostsActionCreator(fakeListPosts)
+          loadAllPostsActionCreator(fakeListPostsWithUserName)
         );
       });
     });

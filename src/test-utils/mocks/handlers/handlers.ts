@@ -1,7 +1,8 @@
 import { rest } from "msw";
-import fakeListPosts from "../posts/postsMocks";
+import { fakeListPosts } from "../posts/postsMocks";
 
 const allPostsURL = "https://jsonplaceholder.typicode.com/posts";
+const user = "https://jsonplaceholder.typicode.com/users/";
 
 export const handlers = [
   rest.get(allPostsURL, async (req, res, ctx) => {
@@ -16,5 +17,14 @@ export const handlers = [
       );
     }
     return res(ctx.status(200), ctx.json(fakeListPosts));
+  }),
+
+  rest.get(`${user}1`, async (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        name: "Leanne Graham",
+      })
+    );
   }),
 ];
