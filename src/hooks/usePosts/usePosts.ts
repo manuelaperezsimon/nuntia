@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useCallback } from "react";
 import { useAppDispatch } from "../../store/hooks";
-import { loadAllPostsActionCreator } from "../../store/features/posts/slices/postsSlice";
+import { loadAllPostsActionCreator } from "../../store/features/slices/posts/postsSlice";
 import { errorModal } from "../../utils/modals";
 import { Posts } from "../../interfaces/postsInterface";
 
