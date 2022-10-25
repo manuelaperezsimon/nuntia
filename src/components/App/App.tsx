@@ -3,9 +3,9 @@ import { ThemeProvider } from "styled-components";
 import { Route, Routes } from "react-router-dom";
 import styledMainTheme from "../../styleMainTheme";
 import PostsListPage from "../../pages/PostsListPage";
-import Loading from "../Loading/Loading";
 import { useAppSelector } from "../../store/hooks";
 import { RootState } from "../../store/store";
+import Loading from "../Loading/Loading";
 
 function App() {
   const isLoading = useAppSelector((state: RootState) => state.loading);
