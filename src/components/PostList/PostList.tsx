@@ -19,7 +19,7 @@ const PostList = (): JSX.Element => {
       <PostsListStyled>
         <ul className="posts__list">
           {postsList.map((post) => (
-            <li key={post.title} className="posts__post">
+            <li key={post.id} className="posts__post">
               <PostCard post={post} />
             </li>
           ))}
