@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useCallback } from "react";
 import { useAppDispatch } from "../../store/hooks";
-import { loadAllPostsActionCreator } from "../../store/features/slices/posts/postsSlice";
-import { errorModal } from "../../utils/modals";
+import {
+  deletePostActionCreator,
+  loadAllPostsActionCreator,
+} from "../../store/features/slices/posts/postsSlice";
+import { errorModal, successModal } from "../../utils/modals";
 import { Posts } from "../../interfaces/postsInterface";
 import { isLoadingActionCreator } from "../../store/features/slices/loading/loadingSlice";
 
@@ -32,8 +35,27 @@ const usePosts = () => {
     }
   }, [dispatch]);
 
+  const deletePost = useCallback(
+    async (postId: number) => {
+      const postWithIdURL = "https://jsonplaceholder.typicode.com/posts/";
+
+      try {
+        dispatch(isLoadingActionCreator());
+        await axios.delete(`${postWithIdURL}${postId}`);
+        dispatch(deletePostActionCreator(postId));
+
+        dispatch(isLoadingActionCreator());
+        successModal("Great! The post has been deleted!");
+      } catch (error) {
+        errorModal("Oops, something went wrong :(");
+      }
+    },
+    [dispatch]
+  );
+
   return {
     getAllPosts,
+    deletePost,
   };
 };
 
