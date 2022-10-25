@@ -1,17 +1,17 @@
 import { render, screen } from "@testing-library/react";
-import { Posts } from "../interfaces/postsInterface";
-import { RootState } from "../store/store";
+import { Posts } from "../../interfaces/postsInterface";
+import { RootState } from "../../store/store";
 import {
   fakeListPosts,
   fakeListPostsWithUserName,
-} from "../test-utils/mocks/posts/postsMocks";
-import Wrapper from "../utils/Wrapper";
+} from "../../test-utils/mocks/posts/postsMocks";
+import Wrapper from "../../utils/Wrapper";
 import PostsListPage from "./PostsListPage";
 
 const mockUseAppSelector = jest.fn();
 
-jest.mock("../store/hooks", () => ({
-  ...jest.requireActual("../store/hooks"),
+jest.mock("../../store/hooks", () => ({
+  ...jest.requireActual("../../store/hooks"),
   useAppSelector: (callback: (state: RootState) => Posts) => {
     callback({ posts: [], loading: false });
     return mockUseAppSelector();
