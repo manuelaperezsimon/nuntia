@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import { Route, Routes } from "react-router-dom";
 import styledMainTheme from "../../styleMainTheme";
-import PostsListPage from "../../pages/PostsListPage";
+import PostsListPage from "../../pages/PostsListPage/PostsListPage";
 import { useAppSelector } from "../../store/hooks";
 import { RootState } from "../../store/store";
 import Loading from "../Loading/Loading";
