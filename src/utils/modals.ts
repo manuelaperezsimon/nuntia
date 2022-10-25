@@ -5,7 +5,7 @@ export const errorModal = (error: string) =>
     position: toast.POSITION.TOP_CENTER,
   });
 
-export const successModal = (error: string) =>
-  toast.success(error, {
+export const successModal = (message: string) =>
+  toast.success(message, {
     position: toast.POSITION.TOP_CENTER,
   });
