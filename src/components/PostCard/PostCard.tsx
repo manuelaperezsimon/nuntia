@@ -4,6 +4,7 @@ import PostCardStyled from "./PostCardStyled";
 import usePosts from "../../hooks/usePosts/usePosts";
 import { SyntheticEvent } from "react";
 import "react-toastify/dist/ReactToastify.css";
+import Button from "../Button/Button";
 
 interface PostCardProps {
   post: Post;
@@ -29,6 +30,13 @@ const PostCard = ({
           <span className="post-card__author">{userName}</span>
           <h3 className="post-card__title">{title}</h3>
           <p className="post-card__content">{body}</p>
+          <Button
+            text="Edit"
+            type="button"
+            actionOnClick={() => {}}
+            isDisabled={false}
+            classNameOfType="button button--big"
+          />
         </div>
       </PostCardStyled>
     </>

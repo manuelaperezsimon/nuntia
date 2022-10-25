@@ -11,12 +11,14 @@ jest.mock("../../hooks/usePosts/usePosts", () => () => mockRemovePost);
 
 describe("Given a Post Card component", () => {
   describe("When it's intantiated", () => {
-    test("Then it should show a 'Leanne Graham' as a name, a title of post and a content", () => {
+    test("Then it should show a 'Leanne Graham' as a name, a title of post, a content and a button", () => {
       render(
         <Provider store={store}>
           <PostCard post={fakePost} />
         </Provider>
       );
+
+      const buttonText = "Edit";
 
       const post = [
         screen.getByText(fakePost.userName as string),
@@ -25,6 +27,7 @@ describe("Given a Post Card component", () => {
         }),
         screen.getByText(fakePost.body),
         screen.getByTestId("icon-trash"),
+        screen.getByRole("button", { name: buttonText }),
       ];
 
       post.forEach((element) => {
