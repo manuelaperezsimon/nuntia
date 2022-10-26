@@ -5,6 +5,7 @@ import usePosts from "../../hooks/usePosts/usePosts";
 import { SyntheticEvent } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import Button from "../Button/Button";
+import { useNavigate } from "react-router-dom";
 
 interface PostCardProps {
   post: Post;
@@ -14,10 +15,16 @@ const PostCard = ({
   post: { userName, title, body, id },
 }: PostCardProps): JSX.Element => {
   const { deletePost } = usePosts();
+  const navigate = useNavigate();
 
   const removePost = (event: SyntheticEvent) => {
     event.preventDefault();
+
     deletePost(id);
+  };
+
+  const goToFormEdit = async () => {
+    await navigate(`/edit/${id}`);
   };
 
   return (
@@ -33,7 +40,7 @@ const PostCard = ({
           <Button
             text="Edit"
             type="button"
-            actionOnClick={() => {}}
+            actionOnClick={goToFormEdit}
             isDisabled={false}
             classNameOfType="button button--big"
           />
