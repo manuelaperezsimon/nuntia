@@ -14,7 +14,9 @@ describe("Given a Post Card component", () => {
     test("Then it should show a 'Leanne Graham' as a name, a title of post, a content and a button", () => {
       render(
         <Provider store={store}>
-          <PostCard post={fakePost} />
+          <BrowserRouter>
+            <PostCard post={fakePost} />
+          </BrowserRouter>
         </Provider>
       );
 
