@@ -1,7 +1,12 @@
 import Button from "../Button/Button";
 import { IoIosClose } from "react-icons/io";
+import { Post } from "../../interfaces/postsInterface";
 
-const Form = (): JSX.Element => {
+interface PostProps {
+  post: Post;
+}
+
+const Form = ({ post }: PostProps): JSX.Element => {
   return (
     <>
       <h2 className="form__heading">Edit the post!</h2>
