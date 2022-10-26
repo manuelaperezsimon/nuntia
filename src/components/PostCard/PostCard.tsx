@@ -23,8 +23,8 @@ const PostCard = ({
     deletePost(id);
   };
 
-  const goToFormEdit = async () => {
-    await navigate(`/edit/${id}`);
+  const goToFormEdit = () => {
+    navigate(`/edit/${id}`);
   };
 
   return (
