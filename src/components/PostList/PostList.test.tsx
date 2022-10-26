@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { Posts } from "../../interfaces/postsInterface";
 import { RootState, store } from "../../store/store";
 import {
@@ -25,7 +26,9 @@ describe("Given a Posts List component", () => {
 
       render(
         <Provider store={store}>
-          <PostList />
+          <BrowserRouter>
+            <PostList />
+          </BrowserRouter>
         </Provider>
       );
 

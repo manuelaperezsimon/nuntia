@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { store } from "../../store/store";
+import { fakePost } from "../../test-utils/mocks/posts/postsMocks";
 import Form from "./Form";
 
 describe("Given a Form component", () => {
@@ -8,7 +10,9 @@ describe("Given a Form component", () => {
     test("Then it should show a title, close icon, two inputs and a button", () => {
       render(
         <Provider store={store}>
-          <Form />
+          <BrowserRouter>
+            <Form post={fakePost} />
+          </BrowserRouter>
         </Provider>
       );
 
