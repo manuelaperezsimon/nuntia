@@ -15,7 +15,7 @@ describe("Given a Not Found component", () => {
         </Provider>
       );
 
-      const textHeading = "Page not Found, go to posts!";
+      const textHeading = "404: Page not Found";
 
       const notFoundElements = [
         screen.getByTestId("icon-emoji"),

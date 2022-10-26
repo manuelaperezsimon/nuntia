@@ -4,7 +4,7 @@ const NotFound = (): JSX.Element => {
   return (
     <>
       <ImConfused className="icon--emoji" data-testid="icon-emoji" />
-      <h2>Page not Found, go to posts!</h2>
+      <h2>404: Page not Found</h2>
     </>
   );
 };
