@@ -6,7 +6,7 @@ import NotFound from "./NotFound";
 
 describe("Given a Not Found component", () => {
   describe("When it's instantiated", () => {
-    test.only("Then it should show an icon and a text", () => {
+    test("Then it should show an icon and a text", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>

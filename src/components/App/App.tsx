@@ -6,6 +6,8 @@ import PostsListPage from "../../pages/PostsListPage/PostsListPage";
 import { useAppSelector } from "../../store/hooks";
 import { RootState } from "../../store/store";
 import Loading from "../Loading/Loading";
+import FormPage from "../../pages/FormPage/FormPage";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 
 function App() {
   const isLoading = useAppSelector((state: RootState) => state.loading);
@@ -22,6 +24,8 @@ function App() {
             </>
           }
         />
+        <Route path="/edit/:id" element={<FormPage />} />
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </ThemeProvider>
   );
