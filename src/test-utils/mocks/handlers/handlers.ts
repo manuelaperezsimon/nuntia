@@ -1,5 +1,9 @@
 import { rest } from "msw";
-import { fakeListPosts } from "../posts/postsMocks";
+import {
+  fakeListPosts,
+  fakeListPostsWithUserName,
+  fakePost,
+} from "../posts/postsMocks";
 
 const allPostsURL = "https://jsonplaceholder.typicode.com/posts";
 const user = "https://jsonplaceholder.typicode.com/users/";
@@ -35,5 +39,13 @@ export const handlers = [
 
   rest.delete(`${allPostsURL}/10`, async (req, res, ctx) => {
     return res(ctx.status(404), ctx.json({ error: "Post not found" }));
+  }),
+
+  rest.put(`${allPostsURL}/${idPost}`, async (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(fakeListPostsWithUserName[0]));
+  }),
+
+  rest.put(`${allPostsURL}/10`, async (req, res, ctx) => {
+    return res(ctx.status(400), ctx.json({ error: "Error to edit post" }));
   }),
 ];

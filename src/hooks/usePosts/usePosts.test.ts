@@ -2,6 +2,7 @@ import { renderHook, waitFor } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import {
   deletePostActionCreator,
+  editPostActionCreator,
   loadAllPostsActionCreator,
 } from "../../store/features/slices/posts/postsSlice";
 import usePosts from "./usePosts";
@@ -28,6 +29,12 @@ describe("Given a usePosts function", () => {
   const {
     result: {
       current: { deletePost },
+    },
+  } = renderHook(usePosts);
+
+  const {
+    result: {
+      current: { editPost },
     },
   } = renderHook(usePosts);
   describe("When getAllPosts it's invoked", () => {
@@ -117,6 +124,73 @@ describe("Given a usePosts function", () => {
             position: toast.POSITION.TOP_CENTER,
           }
         );
+      });
+    });
+
+    describe("When the editPost it's invoked with a post", () => {
+      test("Then it should call the dispatch with isLoadingActionCreator", async () => {
+        await act(async () => {
+          await editPost(fakeListPostsWithUserName[0]);
+        });
+
+        await waitFor(() => {
+          expect(mockUseDispatch).toHaveBeenCalledWith(
+            isLoadingActionCreator()
+          );
+        });
+      });
+
+      test("Then it should call the dispatch with editPostActionCreator with a post edited", async () => {
+        await act(async () => {
+          await editPost(fakeListPostsWithUserName[0]);
+        });
+
+        await waitFor(() => {
+          expect(mockUseDispatch).toHaveBeenCalledWith(
+            editPostActionCreator(fakeListPostsWithUserName[0])
+          );
+        });
+      });
+    });
+
+    describe("When the editPost it's invoked with a post and was ok", () => {
+      test("Then it should call the success modal", async () => {
+        await act(async () => {
+          await editPost(fakeListPostsWithUserName[0]);
+        });
+
+        await waitFor(() => {
+          expect(toast.success).toHaveBeenCalledWith(
+            "Hey! The post has been edited!",
+            {
+              position: toast.POSITION.TOP_CENTER,
+            }
+          );
+        });
+      });
+    });
+
+    describe("When the editPost it's invoked with a post and was not ok", () => {
+      test("Then it should call the error modal", async () => {
+        const postToEdit = {
+          userId: 1,
+          id: 10,
+          title: "Travel",
+          body: "The best beach is un Santa Teresa, Costa Rica",
+          userName: "Leanne Graham",
+        };
+        await act(async () => {
+          await editPost(postToEdit);
+        });
+
+        await waitFor(() => {
+          expect(toast.error).toHaveBeenCalledWith(
+            "Oops, something went wrong :(",
+            {
+              position: toast.POSITION.TOP_CENTER,
+            }
+          );
+        });
       });
     });
   });

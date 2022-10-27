@@ -3,10 +3,11 @@ import { useCallback } from "react";
 import { useAppDispatch } from "../../store/hooks";
 import {
   deletePostActionCreator,
+  editPostActionCreator,
   loadAllPostsActionCreator,
 } from "../../store/features/slices/posts/postsSlice";
 import { errorModal, successModal } from "../../utils/modals";
-import { Posts } from "../../interfaces/postsInterface";
+import { Posts, Post } from "../../interfaces/postsInterface";
 import { isLoadingActionCreator } from "../../store/features/slices/loading/loadingSlice";
 
 const usePosts = () => {
@@ -53,9 +54,35 @@ const usePosts = () => {
     [dispatch]
   );
 
+  const editPost = useCallback(
+    async (post: Post) => {
+      const postWithIdURL = "https://jsonplaceholder.typicode.com/posts/";
+
+      try {
+        dispatch(isLoadingActionCreator());
+        const { data: editedPost } = await axios.put(
+          `${postWithIdURL}${post.id}`,
+          post,
+          {
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          }
+        );
+        dispatch(editPostActionCreator(editedPost));
+
+        dispatch(isLoadingActionCreator());
+        successModal("Hey! The post has been edited!");
+      } catch (error) {
+        errorModal("Oops, something went wrong :(");
+      }
+    },
+    [dispatch]
+  );
   return {
     getAllPosts,
     deletePost,
+    editPost,
   };
 };
 
