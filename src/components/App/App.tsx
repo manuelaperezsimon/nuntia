@@ -1,6 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import styledMainTheme from "../../styleMainTheme";
 import PostsListPage from "../../pages/PostsListPage/PostsListPage";
 import { useAppSelector } from "../../store/hooks";
@@ -8,6 +8,7 @@ import { RootState } from "../../store/store";
 import Loading from "../Loading/Loading";
 import FormPage from "../../pages/FormPage/FormPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
+import LoginPage from "../../pages/LoginPage/LoginPage";
 
 function App() {
   const isLoading = useAppSelector((state: RootState) => state.loading);
@@ -15,6 +16,8 @@ function App() {
   return (
     <ThemeProvider theme={styledMainTheme}>
       <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route
           path="/posts"
           element={
