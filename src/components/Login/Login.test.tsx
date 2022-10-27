@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "../../store/store";
 import Login from "./Login";
+import userEvent from "@testing-library/user-event";
 
 describe("Given a Login component", () => {
   describe("When it's instantiated", () => {
@@ -30,6 +31,35 @@ describe("Given a Login component", () => {
       elementsLogin.forEach((element) => {
         expect(element).toBeInTheDocument();
       });
+    });
+  });
+
+  describe("When the user type on the inputs", () => {
+    test("Then the inputs values have to be that user type", async () => {
+      const usernameTyped = "Hilario";
+      const passwordTyped = "Bye";
+
+      render(
+        <Provider store={store}>
+          <Login />
+        </Provider>
+      );
+
+      const placeholderInputUsername = "Enter your user name :)";
+      const placeholderInputPassword = "Here your password";
+
+      const inputOfUsername = screen.getByPlaceholderText(
+        placeholderInputUsername
+      ) as HTMLInputElement;
+      const inputOfPassword = screen.getByPlaceholderText(
+        placeholderInputPassword
+      ) as HTMLInputElement;
+
+      await userEvent.type(inputOfUsername, usernameTyped);
+      await userEvent.type(inputOfPassword, passwordTyped);
+
+      expect(inputOfUsername).toHaveValue(usernameTyped);
+      expect(inputOfPassword).toHaveValue(passwordTyped);
     });
   });
 });

@@ -1,6 +1,22 @@
+import { useState } from "react";
+import User from "../../interfaces/userInterface";
 import Button from "../Button/Button";
 
 const Login = (): JSX.Element => {
+  const initialState: User = {
+    userName: "",
+    password: "",
+  };
+
+  const [postEdit, setPostEdit] = useState(initialState);
+
+  const hasOneEmptyField =
+    postEdit.userName.length < 1 || postEdit.password.length < 1;
+
+  const onChageData = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPostEdit({ ...postEdit, [event.target.id]: event.target.value });
+  };
+
   return (
     <>
       <h2 className="form__heading">Welcome back!</h2>
@@ -16,8 +32,8 @@ const Login = (): JSX.Element => {
             placeholder="Enter your user name :)"
             autoComplete="off"
             required
-            value={""}
-            onChange={() => {}}
+            value={postEdit.userName}
+            onChange={onChageData}
           />
         </div>
         <div className="form-login__group">
@@ -31,13 +47,13 @@ const Login = (): JSX.Element => {
             placeholder="Here your password"
             autoComplete="off"
             required
-            value={""}
-            onChange={() => {}}
+            value={postEdit.password}
+            onChange={onChageData}
           />
         </div>
 
         <Button
-          isDisabled={false}
+          isDisabled={hasOneEmptyField}
           text="Sign In"
           type="submit"
           classNameOfType="button--big"
