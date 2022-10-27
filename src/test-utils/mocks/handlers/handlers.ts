@@ -1,9 +1,5 @@
 import { rest } from "msw";
-import {
-  fakeListPosts,
-  fakeListPostsWithUserName,
-  fakePost,
-} from "../posts/postsMocks";
+import { fakeListPosts, fakeListPostsWithUserName } from "../posts/postsMocks";
 
 const allPostsURL = "https://jsonplaceholder.typicode.com/posts";
 const user = "https://jsonplaceholder.typicode.com/users/";
