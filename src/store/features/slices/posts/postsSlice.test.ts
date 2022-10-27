@@ -5,6 +5,7 @@ import {
 } from "../../../../test-utils/mocks/posts/postsMocks";
 import postsSlice, {
   deletePostActionCreator,
+  editPostActionCreator,
   loadAllPostsActionCreator,
   postsReducer,
 } from "./postsSlice";
@@ -47,6 +48,26 @@ describe("Given a posts slice", () => {
       const result = postsReducer(initialStateTest, actionDelete);
 
       expect(result).toStrictEqual(expectedState);
+    });
+  });
+
+  describe("When called with the edit function with a posts that exist in the state", () => {
+    test("Then it should return an updated state", () => {
+      const postToEdit = [fakePost];
+
+      const postEdited = {
+        userId: 1,
+        id: 2,
+        title: "Drive a Ferrari",
+        body: "The best experience in the world",
+        userName: "Leanne Graham",
+      };
+
+      const actionFake = editPostActionCreator(postEdited);
+
+      const result = postsReducer(postToEdit, actionFake);
+
+      expect(result).toStrictEqual([postEdited]);
     });
   });
 });
