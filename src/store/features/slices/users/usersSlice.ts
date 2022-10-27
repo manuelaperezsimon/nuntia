@@ -3,6 +3,7 @@ import User from "../../../../interfaces/userInterface";
 
 const userInitialState: User = {
   userName: "",
+  password: "",
 };
 
 const usersSlice = createSlice({
