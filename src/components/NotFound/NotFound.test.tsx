@@ -6,7 +6,7 @@ import NotFound from "./NotFound";
 
 describe("Given a Not Found component", () => {
   describe("When it's instantiated", () => {
-    test("Then it should show an icon and a text", () => {
+    test("Then it should show an icon and a text and a button", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -15,11 +15,13 @@ describe("Given a Not Found component", () => {
         </Provider>
       );
 
-      const textHeading = "404: Page not Found";
+      const textHeading = "There's nothing around here!";
+      const textButton = "Go to posts!";
 
       const notFoundElements = [
         screen.getByTestId("icon-emoji"),
         screen.getByRole("heading", { name: textHeading }),
+        screen.getByRole("button", { name: textButton }),
       ];
 
       notFoundElements.forEach((element) => {

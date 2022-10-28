@@ -7,7 +7,7 @@ import NotFoundPage from "./NotFoundPage";
 describe("Given the NotFound page", () => {
   describe("When it's instantiated", () => {
     test("Then should show 'NotFound' component", () => {
-      const textNotFound = "404: Page not Found";
+      const textNotFound = "There's nothing around here!";
       const textLink = "Go to posts!";
 
       render(
