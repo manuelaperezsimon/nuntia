@@ -13,6 +13,12 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockNavigate,
 }));
 
+let mockEditPost = jest.fn();
+
+jest.mock("../../hooks/usePosts/usePosts", () => {
+  return () => ({ editPost: mockEditPost });
+});
+
 describe("Given a Form component", () => {
   describe("When it's instantiated", () => {
     test("Then it should show a title, close icon, two inputs and a button", () => {
@@ -47,7 +53,9 @@ describe("Given a Form component", () => {
     test("Then it should call the navigateToPostsList function", async () => {
       render(
         <Provider store={store}>
-          <Form post={fakePost} />
+          <BrowserRouter>
+            <Form post={fakePost} />
+          </BrowserRouter>
         </Provider>
       );
 
@@ -87,6 +95,24 @@ describe("Given a Form component", () => {
 
       expect(inputOfTitle).toHaveValue(fakePost.title + titleInputTyped);
       expect(inputOfBody).toHaveValue(fakePost.body + bodyInputTyped);
+    });
+  });
+
+  describe("When the user submit", () => {
+    test("Then it should call the editPost function", async () => {
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Form post={fakePost} />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const submitButton = screen.getByRole("button");
+
+      await userEvent.click(submitButton);
+
+      expect(mockEditPost).toHaveBeenCalled();
     });
   });
 });
