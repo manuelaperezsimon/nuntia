@@ -15,18 +15,11 @@ function App() {
 
   return (
     <ThemeProvider theme={styledMainTheme}>
+      <Loading isLoading={isLoading} />
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route
-          path="/posts"
-          element={
-            <>
-              <Loading isLoading={isLoading} />
-              <PostsListPage />
-            </>
-          }
-        />
+        <Route path="/posts" element={<PostsListPage />} />
         <Route path="/edit/:id" element={<FormPage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
