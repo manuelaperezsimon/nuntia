@@ -79,6 +79,7 @@ const usePosts = () => {
     },
     [dispatch]
   );
+
   return {
     getAllPosts,
     deletePost,
