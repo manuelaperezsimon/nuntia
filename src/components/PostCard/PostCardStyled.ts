@@ -4,25 +4,47 @@ const PostCardStyled = styled.article`
   display: flex;
   flex-direction: column;
   font-size: 1.1rem;
-  position: relative;
-  font-family: "Poppins", sans-serif;
 
   .post-card__container {
-    background-color: ${(props) => props.theme.secondaryColor};
     display: grid;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    background-color: ${(props) => props.theme.whiteColor};
+    border-radius: 0.4rem;
+    padding: 2.2rem;
   }
 
   .icon {
-    display: grid;
-    justify-content: flex-end;
+    font-size: 2rem;
+    cursor: pointer;
   }
 
-  .post-card__author {
-    color: ${(props) => props.theme.primaryColor};
-    font-size: 1.3rem;
+  .post-card {
+    &__author {
+      color: ${(props) => props.theme.primaryColor};
+      font-size: 1.2rem;
+    }
+
+    &__title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    &__content {
+      font-weight: lighter;
+    }
+
+    &__footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 3rem;
+    }
+  }
+
+  .button--small {
+    width: 50%;
   }
 `;
 
