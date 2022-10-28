@@ -1,5 +1,6 @@
 import { rest } from "msw";
 import { fakeListPosts, fakeListPostsWithUserName } from "../posts/postsMocks";
+import fakeUser from "../users/users";
 
 const allPostsURL = "https://jsonplaceholder.typicode.com/posts";
 const user = "https://jsonplaceholder.typicode.com/users/";
@@ -43,5 +44,12 @@ export const handlers = [
 
   rest.put(`${allPostsURL}/10`, async (req, res, ctx) => {
     return res(ctx.status(400), ctx.json({ error: "Error to edit post" }));
+  }),
+
+  rest.get(`${user}`, async (req, res, ctx) => {
+    const username = req.url.searchParams.get("username");
+
+    if (username === "Bret") return res(ctx.status(200), ctx.json([fakeUser]));
+    else return res(ctx.status(400), ctx.json([]));
   }),
 ];
