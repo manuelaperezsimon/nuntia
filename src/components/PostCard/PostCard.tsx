@@ -31,19 +31,21 @@ const PostCard = ({
     <>
       <PostCardStyled>
         <div className="post-card__container">
-          <div className="icon">
-            <FaRegTrashAlt onClick={removePost} data-testid="icon-trash" />
-          </div>
           <span className="post-card__author">{userName}</span>
           <h3 className="post-card__title">{title}</h3>
           <p className="post-card__content">{body}</p>
-          <Button
-            text="Edit"
-            type="button"
-            actionOnClick={goToFormEdit}
-            isDisabled={false}
-            classNameOfType="button button--big"
-          />
+          <div className="post-card__footer">
+            <Button
+              text="Edit"
+              type="button"
+              actionOnClick={goToFormEdit}
+              isDisabled={false}
+              classNameOfType="button button--small"
+            />
+            <div className="icon">
+              <FaRegTrashAlt onClick={removePost} data-testid="icon-trash" />
+            </div>
+          </div>
         </div>
       </PostCardStyled>
     </>
