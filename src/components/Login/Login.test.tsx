@@ -5,6 +5,12 @@ import { store } from "../../store/store";
 import Login from "./Login";
 import userEvent from "@testing-library/user-event";
 
+let mockCheckLogin = jest.fn();
+
+jest.mock("../../hooks/useUsers/useUsers", () => {
+  return () => ({ checkLogin: mockCheckLogin });
+});
+
 describe("Given a Login component", () => {
   describe("When it's instantiated", () => {
     test("Then it should show a title, two inputs and a button", () => {
@@ -16,10 +22,10 @@ describe("Given a Login component", () => {
         </Provider>
       );
 
-      const title = "Welcome back!";
+      const title = "nuntia.";
       const labelUserName = "User Name:";
       const labelPassword = "Password:";
-      const buttonText = "Sign In";
+      const buttonText = "Log In";
 
       const elementsLogin = [
         screen.getByRole("heading", { name: title }),
@@ -41,7 +47,9 @@ describe("Given a Login component", () => {
 
       render(
         <Provider store={store}>
-          <Login />
+          <BrowserRouter>
+            <Login />
+          </BrowserRouter>
         </Provider>
       );
 
@@ -60,6 +68,39 @@ describe("Given a Login component", () => {
 
       expect(inputOfUsername).toHaveValue(usernameTyped);
       expect(inputOfPassword).toHaveValue(passwordTyped);
+    });
+  });
+
+  describe("When the user click Log In", () => {
+    test("Then it should call the checkLogin function", async () => {
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Login />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const buttonText = "Log In";
+
+      const usernameTyped = "Hilario";
+      const passwordTyped = "Bye";
+      const placeholderInputUsername = "Enter your user name :)";
+      const placeholderInputPassword = "Here your password";
+
+      const inputOfUsername = screen.getByPlaceholderText(
+        placeholderInputUsername
+      ) as HTMLInputElement;
+      const inputOfPassword = screen.getByPlaceholderText(
+        placeholderInputPassword
+      ) as HTMLInputElement;
+
+      const submitButton = screen.getByRole("button", { name: buttonText });
+      await userEvent.type(inputOfUsername, usernameTyped);
+      await userEvent.type(inputOfPassword, passwordTyped);
+      await userEvent.click(submitButton);
+
+      expect(mockCheckLogin).toHaveBeenCalled();
     });
   });
 });

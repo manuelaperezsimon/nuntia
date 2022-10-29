@@ -15,10 +15,10 @@ describe("Given a LoginPage component", () => {
         </Provider>
       );
 
-      const title = "Welcome back!";
+      const title = "nuntia.";
       const labelUserName = "User Name:";
       const labelPassword = "Password:";
-      const buttonText = "Sign In";
+      const buttonText = "Log In";
 
       const elementsLogin = [
         screen.getByRole("heading", { name: title }),
