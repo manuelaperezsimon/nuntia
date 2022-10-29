@@ -47,6 +47,11 @@ const PostCardStyled = styled.article`
   .button--small {
     width: 50%;
   }
+
+  @media (min-width: 900px) {
+    display: -webkit-box;
+    height: 100%;
+  }
 `;
 
 export default PostCardStyled;
