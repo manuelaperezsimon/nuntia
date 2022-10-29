@@ -2,7 +2,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import User from "../../interfaces/userInterface";
 import { isLoadingActionCreator } from "../../store/features/slices/loading/loadingSlice";
-import { loginActionCreator } from "../../store/features/slices/users/usersSlice";
+import {
+  loginActionCreator,
+  logoutActionCreator,
+} from "../../store/features/slices/users/usersSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { errorModal } from "../../utils/modals";
 
@@ -34,8 +37,14 @@ const useUsers = () => {
     }
   };
 
+  const logout = () => {
+    dispatch(logoutActionCreator());
+    localStorage.removeItem("username");
+  };
+
   return {
     checkLogin,
+    logout,
   };
 };
 
