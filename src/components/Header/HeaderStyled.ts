@@ -18,6 +18,15 @@ const HeaderStyled = styled.div`
   .icon-logout {
     font-size: 1.7rem;
     color: ${(props) => props.theme.whiteColor};
+    cursor: pointer;
+  }
+
+  @media (min-width: 900px) {
+    padding: 0 1.5rem;
+
+    .icon-logout {
+      font-size: 2rem;
+    }
   }
 `;
 

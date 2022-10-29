@@ -74,12 +74,14 @@ const Login = (): JSX.Element => {
             />
           </div>
 
-          <Button
-            isDisabled={hasOneEmptyField}
-            text="Log In"
-            type="submit"
-            classNameOfType="button button--big"
-          />
+          <div className="form-login__group">
+            <Button
+              isDisabled={hasOneEmptyField}
+              text="Log In"
+              type="submit"
+              classNameOfType="button button--big"
+            />
+          </div>
         </form>
       </LoginStyled>
     </>
