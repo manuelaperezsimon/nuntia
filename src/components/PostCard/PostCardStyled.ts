@@ -32,6 +32,7 @@ const PostCardStyled = styled.article`
 
     &__content {
       font-weight: lighter;
+      color: ${(props) => props.theme.greyColor};
     }
 
     &__footer {
