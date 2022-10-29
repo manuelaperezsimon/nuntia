@@ -9,7 +9,7 @@ const NotFound = (): JSX.Element => {
       <NotFoundStyled>
         <section className="container">
           <ImConfused className="icon--emoji" data-testid="icon-emoji" />
-          <h2>There's nothing around here!</h2>
+          <h2 className="page__heading">There's nothing around here!</h2>
           <Link to={"/posts"}>
             <ButtonStyled className="button-link">Go to posts!</ButtonStyled>
           </Link>
