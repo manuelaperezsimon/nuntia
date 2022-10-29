@@ -64,6 +64,26 @@ const FormStyled = styled.div`
     flex-direction: column;
     gap: 3rem;
   }
+
+  @media (min-width: 900px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .form {
+      width: 60%;
+      max-width: 600px;
+      padding: 1.8rem 3rem;
+    }
+
+    .icon--close {
+      font-size: 4rem;
+    }
+
+    .form__header {
+      width: 60%;
+    }
+  }
 `;
 
 export default FormStyled;
