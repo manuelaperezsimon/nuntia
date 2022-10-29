@@ -82,6 +82,7 @@ const FormStyled = styled.div`
 
     .form__header {
       width: 60%;
+      max-width: 600px;
     }
   }
 `;
