@@ -26,6 +26,29 @@ const PostsListStyled = styled.section`
   .list__text {
     color: ${(props) => props.theme.blackColor};
   }
+
+  @media (min-width: 900px) {
+    .posts__list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .posts__post {
+      width: 30%;
+    }
+
+    .posts-list__heading {
+      padding: 0 1.5rem;
+      font-size: 2rem;
+    }
+
+    .list__text {
+      padding: 0 1.5rem;
+      font-size: 1.2rem;
+    }
+  }
 `;
 
 export default PostsListStyled;
