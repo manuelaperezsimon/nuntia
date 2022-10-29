@@ -32,7 +32,7 @@ const PostsListStyled = styled.section`
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-around;
     }
 
     .posts__post {
