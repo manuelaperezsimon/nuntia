@@ -18,12 +18,10 @@ const LoginStyled = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    max-width: 33rem;
     padding: 1.8rem;
     border-radius: 0.4rem;
     background-color: ${(props) => props.theme.whiteColor};
     color: ${(props) => props.theme.blackColor};
-    max-width: 33rem;
   }
 
   .form__label {
@@ -44,6 +42,18 @@ const LoginStyled = styled.div`
 
   &:focus {
     border-color: ${(props) => props.theme.secondaryColor};
+  }
+
+  @media (min-width: 900px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .form-login {
+      width: 60%;
+      max-width: 600px;
+      padding: 1.8rem 3rem;
+    }
   }
 `;
 
