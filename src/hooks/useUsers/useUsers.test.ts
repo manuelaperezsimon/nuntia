@@ -17,6 +17,18 @@ jest.mock("../../store/hooks", () => ({
   useAppDispatch: () => mockUseDispatch,
 }));
 
+const mockLocalStorage = {
+  setItem: jest.fn(),
+  getItem: jest.fn(),
+  removeItem: jest.fn(),
+  clear: jest.fn(),
+  length: 1,
+  key: jest.fn(),
+};
+beforeAll(() => {
+  window.localStorage = mockLocalStorage;
+});
+
 describe("Given a useUsers function", () => {
   const {
     result: {
