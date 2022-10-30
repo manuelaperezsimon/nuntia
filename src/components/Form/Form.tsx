@@ -85,7 +85,11 @@ const Form = ({ post }: PostProps): JSX.Element => {
               type="submit"
               actionOnClick={() => {}}
               isDisabled={hasOneEmptyField}
-              classNameOfType="button button--big"
+              classNameOfType={
+                hasOneEmptyField
+                  ? "button button--disabled"
+                  : "button button--big"
+              }
             />
           </div>
         </form>

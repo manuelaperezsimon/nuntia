@@ -65,6 +65,10 @@ const FormStyled = styled.div`
     gap: 3rem;
   }
 
+  .button--disabled {
+    background-color: ${(props) => props.theme.secondaryColor};
+  }
+
   @media (min-width: 900px) {
     display: flex;
     flex-direction: column;
