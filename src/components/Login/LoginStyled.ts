@@ -44,6 +44,10 @@ const LoginStyled = styled.div`
     border-color: ${(props) => props.theme.secondaryColor};
   }
 
+  .button--disabled {
+    background-color: ${(props) => props.theme.secondaryColor};
+  }
+
   @media (min-width: 900px) {
     display: flex;
     flex-direction: column;

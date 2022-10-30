@@ -79,7 +79,11 @@ const Login = (): JSX.Element => {
               isDisabled={hasOneEmptyField}
               text="Log In"
               type="submit"
-              classNameOfType="button button--big"
+              classNameOfType={
+                hasOneEmptyField
+                  ? "button button--disabled"
+                  : "button button--big"
+              }
             />
           </div>
         </form>
