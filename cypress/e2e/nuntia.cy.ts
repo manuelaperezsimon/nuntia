@@ -42,7 +42,7 @@ describe("Given a URL of nuntia", () => {
 
   it("Then it should go to login page", () => {
     cy.get(".icon-logout").click().clearLocalStorage();
-    cy.get("h3").contains("Log In");
+    cy.get("h2").contains("Log In");
     cy.get(".button").should("be.disabled");
     cy.get("#userName");
     cy.get("#password");
