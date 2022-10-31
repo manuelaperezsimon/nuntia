@@ -43,7 +43,11 @@ const PostCard = ({
               classNameOfType="button button--small"
             />
             <div className="icon">
-              <FaRegTrashAlt onClick={removePost} data-testid="icon-trash" />
+              <FaRegTrashAlt
+                onClick={removePost}
+                data-testid="icon-trash"
+                className="icon-trash"
+              />
             </div>
           </div>
         </div>
