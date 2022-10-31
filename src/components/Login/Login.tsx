@@ -33,7 +33,7 @@ const Login = (): JSX.Element => {
     <>
       <LoginStyled>
         <h1>nuntia.</h1>
-        <h3 className="heading-login">Log In</h3>
+        <h2 className="heading-login">Log In</h2>
         <form
           action=""
           className="form-login"
